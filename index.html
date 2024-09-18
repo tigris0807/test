@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Pagi & Kirim Pesan WhatsApp</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to top right, #FFDEE9, #B5FFFC);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .greeting-container {
+            text-align: center;
+            color: #333;
+            margin-bottom: 50px;
+            z-index: 10;
+        }
+
+        .greeting {
+            font-size: 2.5em;
+            margin: 0;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 2s ease-in-out forwards;
+        }
+
+        .name {
+            font-size: 3em;
+            margin: 10px 0;
+            color: #FF6F61;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 2.5s ease-in-out forwards;
+        }
+
+        .message {
+            font-size: 1.5em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 3s ease-in-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sun {
+            position: absolute;
+            top: -100px;
+            width: 200px;
+            height: 200px;
+            background: yellow;
+            border-radius: 50%;
+            animation: rise 5s ease-in-out forwards;
+        }
+
+        @keyframes rise {
+            0% {
+                top: -200px;
+            }
+            100% {
+                top: 50px;
+            }
+        }
+
+        /* Rainbow */
+        .rainbow {
+            position: absolute;
+            bottom: 50px;
+            width: 300px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(
+                red, orange, yellow, green, blue, indigo, violet
+            );
+            opacity: 0.8;
+            z-index: 1;
+            animation: riseRainbow 6s ease-in-out forwards;
+        }
+
+        @keyframes riseRainbow {
+            0% {
+                bottom: -150px;
+            }
+            100% {
+                bottom: 50px;
+            }
+        }
+
+        /* Clouds */
+        .cloud {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .cloud1 {
+            width: 150px;
+            height: 80px;
+            top: 60px;
+            left: 20px;
+            animation: moveClouds 10s linear infinite;
+        }
+
+        .cloud2 {
+            width: 100px;
+            height: 50px;
+            top: 80px;
+            right: 50px;
+            animation: moveClouds 12s linear infinite;
+        }
+
+        .cloud3 {
+            width: 180px;
+            height: 90px;
+            top: 120px;
+            left: 180px;
+            animation: moveClouds 15s linear infinite;
+        }
+
+        @keyframes moveClouds {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(50px);
+            }
+        }
+
+        .whatsapp-btn {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #20b558;
+        }
+
+        .icon {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sun"></div>
+
+    <!-- Clouds -->
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+
+    <div class="greeting-container">
+        <h1 class="greeting">Selamat Pagi</h1>
+        <h2 class="name">Ebiiiiiiiiii</h2>
+        <p class="message">Semoga harimu indah dan penuh kebahagiaan!</p>
+    </div>
+
+    <button class="whatsapp-btn" onclick="sendMessage()">
+        <span class="icon">📱</span> Kirim Pesan via WhatsApp
+    </button>
+
+    <script>
+        // Ganti nama dengan nama orang yang disayangi
+        document.querySelector('.name').innerText = 'Ebiiiiiiiiii';
+
+        function sendMessage() {
+            const phoneNumber = '6281254787620';
+            const message = encodeURIComponent("Selamat pagi, Ivan! Semoga harimu menyenangkan 😊");
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
